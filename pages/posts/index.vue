@@ -1,21 +1,36 @@
+<script setup lang="ts">
+import type { PostDataType } from '~/types.ts'
+import { useFetch } from '#app'
+import ApiRequestViewManager from '~/components/commons/ApiRequestViewManager.vue'
+
+const { data: posts, error, pending } = await useFetch<PostDataType[]>('/api/posts', {
+  query: {
+    limit: 20,
+    offset: 40,
+    include: 'user',
+    order: 'oldestFirst',
+    select: "id,title,content,excerpt,publishedAt,image,content,user.firstName, user.lastName, user.avatar, user.email",
+  }
+})
+
+</script>
+
 <template>
-  <div class="h-screen flex justify-center items-center">
-    <div>
-      <h1 class="text-2xl">Display The Paginated Posts Here</h1>
-      <ul class="list-disc list-inside ml-10">
-        <li>Keep performance in mind</li>
-        <li>Make sure to display optimized images</li>
-        <li>Paginate according to your desired strategy</li>
-        <li>Provide a sort order control</li>
-        <li>Store the sort order in the URL</li>
-        <li>Make it look good 💪</li>
-        <li>
-          Then
-          <NuxtLink class="text-blue-500 underline" to="/posts/hello">
-            go to the next task (displaying the individual post)</NuxtLink
-          >
-        </li>
-      </ul>
-    </div>
+  <div class="container mx-auto pt-4 pb-10">
+    <ApiRequestViewManager :is-error="!!error" :is-client-side-loading="pending">
+      <!--Posts preview container-->
+      <div v-if="!!posts?.length">
+        <h1 class="text-3xl text-center font-semibold">Posts</h1>
+        <p class="w-2/3 mx-auto text-center text-gray-500">There are many variations of passages of
+          Lorem Ipsum available, but the majority have suffered alteration in some form, by injected
+          humour, or randomised words which don't look even slightly believable.</p>
+        <!-- post preview cars component -->
+        <div class="grid grid-cols-2 gap-6 mt-10">
+          <PostPreviewCard v-for="post in posts" :key="post.id" :post="post" />
+        </div>
+      </div>
+      <!-- empty state view -->
+      <PostPreviewListEmptyView v-else />
+    </ApiRequestViewManager>
   </div>
 </template>
