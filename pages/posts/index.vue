@@ -3,7 +3,7 @@ import type { PostDataType, PostSortingDirection } from '~/types.ts'
 
 const router = useRouter()
 const route = useRoute()
-const DEFAULT_SORTING: PostSortingDirection = 'newestFirst'
+const DEFAULT_SORTING: PostSortingDirection = 'newestFirst
 
 // add default query param without page reloading
 onMounted(() => {
