@@ -8,15 +8,13 @@ const { isError, isClientSideLoading } = defineProps<ApiRequestViewManagerProps>
 
 <template>
   <!-- clientSide loading view -->
-  <div v-if="isClientSideLoading">
+  <div v-if="isClientSideLoading" class="text-center">
     Loading...
   </div>
   <!--  request error view -->
-  <div v-if="isError">
+  <div v-if="isError" class="text-center">
     Sorry. There is an error on our server :-(
   </div>
   <!--  success view slot -->
   <slot></slot>
 </template>
-
-<style scoped></style>

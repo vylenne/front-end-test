@@ -23,11 +23,19 @@ const dateOptions = {
       </span>
     </div>
 
-    <NuxtImg :src="post.image" class="rounded" />
+    <div class="h-56 overflow-hidden rounded">
+      <NuxtImg :src="post.image" class="h-auto w-auto" loading="lazy" :alt="post.image" />
+    </div>
     <h4 class="text-2xl font-semibold mt-6">{{ post.title }}</h4>
     <p class="my-2">{{ post.excerpt }}</p>
 
     <div class="flex items-center justify-between mt-4">
+      <div class="flex items-center gap-2">
+        <div class="overflow-hidden rounded-full h-10 w-10">
+          <NuxtImg :src="post.user.avatar" class="h-auto w-auto" loading="lazy" />
+        </div>
+        <span>{{ post.user.firstName }} {{ post.user.lastName }}</span>
+      </div>
       <NuxtLink class="text-blue-600 no-underline flex items-center gap-1 hover:underline"
         to="/posts/{{post.id}}">
         Read more
