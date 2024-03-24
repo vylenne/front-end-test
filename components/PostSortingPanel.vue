@@ -18,10 +18,10 @@ defineEmits<PostSortingPanelEmit>()
 <template>
   <div class="flex gap-2">
     <button class="text-blue-900 p-2 rounded"
-      :class="currentDirection === 'newestFirst' ? 'bg-blue-300' : 'bg-blue-100'"
-      @click="$emit('sortChange', 'newestFirst')">Newest</button>
+            :class="currentDirection === 'newestFirst' ? 'bg-blue-300' : 'bg-blue-100'"
+            @click="$emit('sortChange', 'newestFirst')">Newest</button>
     <button class="text-blue-900 p-2 rounded"
-      :class="currentDirection === 'oldestFirst' ? 'bg-blue-300' : 'bg-blue-100'"
-      @click="$emit('sortChange', 'oldestFirst')">Oldest</button>
+            :class="currentDirection === 'oldestFirst' ? 'bg-blue-300' : 'bg-blue-100'"
+            @click="$emit('sortChange', 'oldestFirst')">Oldest</button>
   </div>
 </template>

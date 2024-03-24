@@ -19,7 +19,6 @@ async function setupDb() {
   loading.value = false;
 }
 </script>
-
 <template>
   <div class="h-screen flex justify-center items-center">
     <div class="flex flex-col gap-8 max-w-[700px]" v-if="!setup">
@@ -52,8 +51,11 @@ async function setupDb() {
           Go to Task #1
         </NuxtLink>
 
-        <a href="#" class="text-sm text-gray-500 underline inline-block ml-4"
-          @click.prevent="setupDb">
+        <a
+          href="#"
+          class="text-sm text-gray-500 underline inline-block ml-4"
+          @click.prevent="setupDb"
+        >
           {{ loading ? "Setting up Database..." : "(or Setup Database Again)" }}
         </a>
       </div>

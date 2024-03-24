@@ -37,7 +37,7 @@ const dateOptions = {
         <span>{{ post.user.firstName }} {{ post.user.lastName }}</span>
       </div>
       <NuxtLink class="text-blue-600 no-underline flex items-center gap-1 hover:underline"
-        to="/posts/{{post.id}}">
+                to="/posts/{{post.id}}">
         Read more
         <IconsArrowRightIcon />
       </NuxtLink>
