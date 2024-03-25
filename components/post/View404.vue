@@ -1,7 +1,3 @@
-<script setup>
-import { BASE_URL } from "~/types"
-</script>
-
 <template>
   <div class="text-center bg-red-50 border border-red-400 p-4 rounded">
     <p class="text-6xl font-semibold">404</p>

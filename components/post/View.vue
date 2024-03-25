@@ -7,6 +7,16 @@ interface PostViewProps {
 
 const { data } = defineProps<PostViewProps>()
 
+useHead({
+  title: data.title,
+  meta: [
+    {
+      name: 'description',
+      content: data.excerpt
+    },
+  ],
+});
+
 </script>
 
 <template>
@@ -18,7 +28,8 @@ const { data } = defineProps<PostViewProps>()
     <h1 class="mt-4 text-4xl">{{ data?.title }}</h1>
     <p class="text-gray-500 mt-2">{{ data?.excerpt }}</p>
     <div class="h-80 overflow-hidden rounded my-4 flex items-center">
-      <NuxtImg v-if="!!data.image" :src="data.image" loading="lazy" format="webp" class="w-full" />
+      <NuxtImg v-if="!!data.image" :src="data.image" :alt="data.image" loading="lazy" format="webp"
+        class="w-full" />
     </div>
     <div v-html="data.content" class="content" />
   </div>

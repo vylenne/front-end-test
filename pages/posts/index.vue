@@ -65,6 +65,16 @@ const onSortChange = (direction: PostSortingDirection) => {
   refresh();
 }
 
+useHead({
+  title: 'Vue School Test Assignment',
+  meta: [
+    {
+      name: 'description',
+      content: 'Senior Frontend Developer_Showdown Test'
+    },
+  ],
+});
+
 </script>
 
 <template>

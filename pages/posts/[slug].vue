@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const route = useRoute();
 const { data, error, pending } = useFetch(`/api/posts/${route.params.slug}`, {
   transform: (post) => {
@@ -17,7 +16,6 @@ const { data, error, pending } = useFetch(`/api/posts/${route.params.slug}`, {
 watch(error, () => {
   console.log(error)
 })
-
 </script>
 
 <template>
