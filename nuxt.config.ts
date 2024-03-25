@@ -9,7 +9,10 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/": {
-      ssr: false,
+      ssr: true,
     },
+    "/posts/*": {
+      isr: true
+    }
   },
 });

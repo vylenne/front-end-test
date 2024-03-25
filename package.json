@@ -14,11 +14,11 @@
   "dependencies": {
     "@nuxt/image": "^1.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@types/domhandler": "^2.4.5",
     "@vueuse/nuxt": "^10.9.0",
     "drizzle-orm": "^0.29.5",
     "nanoid": "^5.0.6",
     "nuxt": "^3.10.3",
-    "sharp": "^0.33.3",
     "typescript": "^5.4.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

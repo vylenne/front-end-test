@@ -1,12 +1,31 @@
+<script setup lang="ts">
+
+const route = useRoute();
+const { data, error, pending } = useFetch(`/api/posts/${route.params.slug}`, {
+  transform: (post) => {
+    let content = post?.content;
+    if (content) {
+      content = content.substring(content.indexOf('<img'))
+      content = content.substring(content.indexOf('>') + 1)
+    } else {
+      content = '';
+    }
+    return { ...post, content }
+  },
+})
+
+watch(error, () => {
+  console.log(error)
+})
+
+</script>
+
 <template>
-  <div class="h-screen flex justify-center items-center">
-    <div>
-      <h1 class="text-2xl">Display the Individual Post Here</h1>
-      <ul class="list-disc list-inside ml-10">
-        <li>Keep seo in mind</li>
-        <li>Make sure to display optimized images</li>
-        <li>Make it look good 💪</li>
-      </ul>
-    </div>
+  <div class="container mx-auto py-10">
+    <CommonsApiRequestViewManager :is-client-side-loading="!!pending"
+      :is-error="!!error && error?.statusCode !== 404">
+      <PostView v-if="!error" :data="data" />
+      <PostView404 v-else />
+    </CommonsApiRequestViewManager>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostDataType } from "~/types"
+import { BASE_URL, type PostDataType } from "~/types"
 
 interface PostPreviewCardProps {
   post: PostDataType
@@ -32,15 +32,15 @@ const dateOptions = {
     <div class="flex items-center justify-between mt-4">
       <div class="flex items-center gap-2">
         <div class="overflow-hidden rounded-full h-10 w-10">
-          <NuxtImg :src="post.user.avatar" class="h-auto w-auto" loading="lazy" />
+          <NuxtImg :src="post.user.avatar" class="h-auto w-auto" loading="lazy" format="webp" />
         </div>
         <span>{{ post.user.firstName }} {{ post.user.lastName }}</span>
       </div>
-      <NuxtLink class="text-blue-600 no-underline flex items-center gap-1 hover:underline"
-                to="/posts/{{post.id}}">
+      <a class="text-blue-600 no-underline flex items-center gap-1 hover:underline"
+        :href="`${BASE_URL}/posts/${post.id}`">
         Read more
         <IconsArrowRightIcon />
-      </NuxtLink>
+      </a>
     </div>
   </div>
 </template>

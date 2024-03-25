@@ -14,3 +14,5 @@ export type PostDataType = {
 
 export type PostSortingDirection = 'oldestFirst' | 'newestFirst';
 
+export const BASE_URL = 'http://localhost:3000'
+
