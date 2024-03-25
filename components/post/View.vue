@@ -17,6 +17,12 @@ useHead({
   ],
 });
 
+const dateOptions = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+}
+
 </script>
 
 <template>
@@ -25,7 +31,24 @@ useHead({
       to="/posts">
       Back to posts
     </NuxtLink>
-    <h1 class="mt-4 text-4xl">{{ data?.title }}</h1>
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="mt-4 text-4xl">{{ data.title }}</h1>
+        <span class="text-sm text-gray-600">{{ new Date(data.publishedAt).toLocaleDateString('en',
+          dateOptions) }}</span>
+      </div>
+      <div class="flex items-center gap-2 my-2">
+        <div class="overflow-hidden rounded-full h-10 w-10">
+          <NuxtImg :src="data.user.avatar" :alt="data.user.avatar" class="h-auto w-auto"
+            loading="lazy" format="webp" />
+        </div>
+        <div>
+          <p>{{ data.user.firstName }} {{ data.user.lastName }}</p>
+          <p class="text-sm text-gray-600">{{ data.user.email }}</p>
+        </div>
+      </div>
+    </div>
+
     <p class="text-gray-500 mt-2">{{ data?.excerpt }}</p>
     <div class="h-80 overflow-hidden rounded my-4 flex items-center">
       <NuxtImg v-if="!!data.image" :src="data.image" :alt="data.image" loading="lazy" format="webp"

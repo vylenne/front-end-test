@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BASE_URL, type PostDataType } from "~/types"
+import { type PostDataType } from "~/types"
 
 interface PostPreviewCardProps {
   post: PostDataType
@@ -39,7 +39,7 @@ const dateOptions = {
         <span>{{ post.user.firstName }} {{ post.user.lastName }}</span>
       </div>
       <a class="text-blue-600 no-underline flex items-center gap-1 hover:underline"
-        :href="`${BASE_URL}/posts/${post.id}`">
+        :href="`posts/${post.id}`">
         Read {{ post.title }}
         <IconsArrowRightIcon />
       </a>

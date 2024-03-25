@@ -9,10 +9,8 @@ export type PostDataType = {
     avatar: string;
     firstName: string;
     lastName: string;
+    email: string;
   }
 }
 
 export type PostSortingDirection = 'oldestFirst' | 'newestFirst';
-
-export const BASE_URL = 'http://localhost:3000'
-

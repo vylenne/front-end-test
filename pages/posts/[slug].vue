@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const route = useRoute();
 const { data, error, pending } = useFetch(`/api/posts/${route.params.slug}`, {
+  query: {
+    include: 'user',
+    select: "id,title,content,excerpt,publishedAt,image,content,user.firstName, user.lastName, user.avatar, user.email",
+  },
   transform: (post) => {
     let content = post?.content;
     if (content) {
